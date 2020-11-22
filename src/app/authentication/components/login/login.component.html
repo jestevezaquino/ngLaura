@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form id="login-form" class="border rounded p-md-2 mt-md-3" [formGroup]="Form">
+            <div class="form-group text-center">
+                <label class="form-field-label" for="username">Username</label>
+                <input id="username" class="form-control" type="text" formControlName='Username' />
+                <div *ngIf="this.Form.controls.Username.invalid && (this.Form.controls.Username.touched || this.Form.controls.Username.dirty)">
+                    <span class="text-danger" *ngIf="this.Form.controls.Username.errors.required">Este campo es requerido.</span>
+                    <span class="text-danger" *ngIf="this.Form.controls.Username.errors.minlength">El nombre de usuario debe tener al menos 5 caracteres.</span>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <label class="form-field-label" for="password">Password</label>
+                <input id="password" class="form-control" type="password" formControlName='Password' />
+                <div *ngIf="this.Form.controls.Password.invalid && (this.Form.controls.Password.touched || this.Form.controls.Password.dirty)">
+                    <span class="text-danger" *ngIf="this.Form.controls.Password.errors.required">Este campo es requerido.</span>
+                    <span class="text-danger" *ngIf="this.Form.controls.Password.errors.minlength">El contraseña debe tener al menos 8 caracteres.</span>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-secondary" [disabled]="this.Form.invalid" (click)="signIn()">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
